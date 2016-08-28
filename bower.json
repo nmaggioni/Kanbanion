@@ -1,0 +1,23 @@
+{
+  "name": "kanbanion",
+  "version": "1.0.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/components"
+  ],
+  "dependencies": {
+    "dragula.js": "dragula#^3.7.1",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0",
+    "jquery-ui": "^1.12.0",
+    "jqueryui-timepicker-addon": "^1.6.3",
+    "bootstrap-material-design": "master",
+    "textarea-autosize": "^0.4.2"
+  },
+  "resolutions": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0",
+    "bootstrap-material-design": "master"
+  }
+}

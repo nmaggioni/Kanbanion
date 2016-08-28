@@ -1,0 +1,63 @@
+html,
+body
+  padding 0
+  margin 15px 0
+  background aliceblue
+
+.category-row
+  padding 0 5px 0 5px
+  .category
+    background-color white
+    border 1px solid gray
+    border-radius 5px
+    padding-bottom 10px
+    .category-title
+      display inline-block
+    button
+      &.new-card
+        float right
+        margin-top 15px
+        margin-bottom 15px
+        zoom: 0.75
+    .cards
+      min-height 50px
+      .panel
+        margin-bottom 0
+      .panel-heading
+        background-image linear-gradient(to bottom, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25))
+        color black
+        ::-webkit-input-placeholder
+          color black
+          opacity 0.25
+      .card
+        margin 0 0 15px 0
+        input
+          width 85%
+          display inline-block
+        .datepicker-btn
+          opacity 0.5
+          cursor default
+        textarea
+          width 100%
+        img
+          &.ui-datepicker-trigger
+            padding-left 10px
+            opacity 0.5
+    &.todo
+      .card
+        h4
+          color black
+    &.doing
+      .card
+        h4
+          color black
+    &.done
+      .card
+        h4
+          color black
+#about
+  display none
+
+.ui-dialog
+  a
+    text-decoration underline

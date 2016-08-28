@@ -1,0 +1,71 @@
+html,
+body {
+  padding: 0;
+  margin: 15px 0;
+  background: #f0f8ff;
+}
+.category-row {
+  padding: 0 5px 0 5px;
+}
+.category-row .category {
+  background-color: #fff;
+  border: 1px solid #808080;
+  border-radius: 5px;
+  padding-bottom: 10px;
+}
+.category-row .category .category-title {
+  display: inline-block;
+}
+.category-row .category button.new-card {
+  float: right;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  zoom: 0.75;
+}
+.category-row .category .cards {
+  min-height: 50px;
+}
+.category-row .category .cards .panel {
+  margin-bottom: 0;
+}
+.category-row .category .cards .panel-heading {
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.25), rgba(255,255,255,0.25));
+  color: #000;
+}
+.category-row .category .cards .panel-heading ::-webkit-input-placeholder {
+  color: #000;
+  opacity: 0.25;
+}
+.category-row .category .cards .card {
+  margin: 0 0 15px 0;
+}
+.category-row .category .cards .card input {
+  width: 85%;
+  display: inline-block;
+}
+.category-row .category .cards .card .datepicker-btn {
+  opacity: 0.5;
+  cursor: default;
+}
+.category-row .category .cards .card textarea {
+  width: 100%;
+}
+.category-row .category .cards .card img.ui-datepicker-trigger {
+  padding-left: 10px;
+  opacity: 0.5;
+}
+.category-row .category.todo .card h4 {
+  color: #000;
+}
+.category-row .category.doing .card h4 {
+  color: #000;
+}
+.category-row .category.done .card h4 {
+  color: #000;
+}
+#about {
+  display: none;
+}
+.ui-dialog a {
+  text-decoration: underline;
+}

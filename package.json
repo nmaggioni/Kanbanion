@@ -1,0 +1,37 @@
+{
+  "name": "kanbanion",
+  "productName": "Kanbanion",
+  "version": "1.0.0",
+  "description": "A Kanban board. Simple, digital and local.",
+  "license": "MIT",
+  "repository": "nmaggioni/kanbanion",
+  "author": {
+    "name": "Niccolò Maggioni",
+    "email": "nicco.maggioni@gmail.com",
+    "url": "nmaggioni.xyz"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . --out=dist --app-version=$npm_package_version --prune --asar --overwrite --all"
+  },
+  "files": [
+    "index.js",
+    "index.html",
+    "index.css"
+  ],
+  "keywords": [
+    "electron-app",
+    "electron"
+  ],
+  "dependencies": {
+    "electron": "^1.3.3",
+    "electron-pug": "^1.5.1",
+    "pug": "^2.0.0-beta5",
+    "stylus": "^0.54.5"
+  },
+  "devDependencies": {
+    "electron-debug": "^1.0.0",
+    "devtron": "^1.1.0",
+    "electron-packager": "^7.0.0"
+  }
+}

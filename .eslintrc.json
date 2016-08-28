@@ -1,0 +1,218 @@
+{
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "indent": [
+            "error",
+            2,
+            {
+              "SwitchCase": 1,
+              "MemberExpression": 1
+            }
+        ],
+        "linebreak-style": [
+            "warn",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "valid-jsdoc": [
+            "error",
+            {
+                "requireReturn": false
+            }
+        ],
+        "block-scoped-var": [
+            "error"
+        ],
+        "curly": [
+            "error",
+            "multi-line"
+        ],
+        "dot-notation": [
+            "warn"
+        ],
+        "eqeqeq": [
+            "error",
+            "always"
+        ],
+        "guard-for-in": [
+            "warn"
+        ],
+        "no-else-return": [
+            "warn"
+        ],
+        "no-eq-null": [
+            "error"
+        ],
+        "no-eval": [
+            "warn"
+        ],
+        "no-extend-native": [
+            "error"
+        ],
+        "no-loop-func": [
+            "error"
+        ],
+        "no-multi-spaces": [
+            "warn"
+        ],
+        "no-self-compare": [
+            "error"
+        ],
+        "yoda": [
+            "warn",
+            "never"
+        ],
+        "wrap-iife": [
+            "error",
+            "any"
+        ],
+        "callback-return": [
+            "warn",
+            ["callback", "cb", "next"]
+        ],
+        "no-mixed-requires": [
+            "error"
+        ],
+        "no-new-require": [
+            "warn"
+        ],
+        "no-path-concat": [
+            "error"
+        ],
+        "array-bracket-spacing": [
+            "warn",
+            "never"
+        ],
+        "block-spacing": [
+            "warn",
+            "never"
+        ],
+        "brace-style": [
+            "error",
+            "1tbs",
+            { "allowSingleLine": true }
+        ],
+        "camelcase": [
+            "error",
+            { "properties": "always" }
+        ],
+        "comma-spacing": [
+            "warn",
+            {
+                "before": false,
+                "after": true
+            }
+        ],
+        "comma-style": [
+            "warn",
+            "last"
+        ],
+        "computed-property-spacing": [
+            "warn",
+            "never"
+        ],
+        "eol-last": [
+            "error"
+        ],
+        "func-style": [
+            "warn",
+            "declaration",
+            { "allowArrowFunctions": true }
+        ],
+        "key-spacing": [
+            "warn",
+            {
+                "beforeColon": false,
+                "afterColon": true,
+                "mode": "strict"
+            }
+        ],
+        "keyword-spacing": [
+            "warn",
+            {
+                "before": true,
+                "after": true
+            }
+        ],
+        "lines-around-comment": [
+            "warn",
+            {
+                "beforeBlockComment": true,
+                "afterBlockComment": false
+            }
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 120,
+                "ignoreComments": true,
+                "ignoreUrls": true
+            }
+        ],
+        "new-parens": [
+            "warn"
+        ],
+        "no-bitwise": [
+            "warn",
+            { "allow": ["|"] }
+        ],
+        "no-lonely-if": [
+            "warn"
+        ],
+        "no-multiple-empty-lines": [
+            "warn",
+            {
+                "max": 2,
+                "maxEOF": 2,
+                "maxBOF": 0
+            }
+        ],
+        "one-var": [
+            "error",
+            {
+                "uninitialized": "always",
+                "initialized": "never"
+            }
+        ],
+        "one-var-declaration-per-line": [
+            "error",
+            "initializations"
+        ],
+        "require-jsdoc": [
+            "error",
+            {
+              "require": {
+                "FunctionDeclaration": true,
+                "MethodDefinition": false,
+                "ClassDeclaration": false
+              }
+            }
+        ],
+        "arrow-body-style": [
+            "error",
+            "as-needed",
+            { "requireReturnForObjectLiteral": true }
+        ],
+        "arrow-parens": [
+            "error",
+            "always"
+        ],
+        "no-console": [
+          "warn"
+        ],
+        "no-var": [
+          "error"
+        ]
+    }
+}

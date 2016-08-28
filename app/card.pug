@@ -1,0 +1,15 @@
+.row.card
+  .panel
+    .panel-heading
+      b.title
+        textarea.form-control(placeholder='Try to drag me to another column!')
+    .panel-body
+      div.form-group.label-floating.description
+        label.control-label Description
+        textarea.form-control
+      div.form-group.label-floating.due-date
+        label.control-label Due date
+        input.form-control.datepicker(type='text')
+
+      button.btn.btn-danger.btn-xs.btn-block.btn-raised.delete-card(type='button')
+        | Delete

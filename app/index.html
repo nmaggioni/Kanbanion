@@ -1,0 +1,126 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Kanbaner</title><link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css"><link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap-theme.min.css"><link rel="stylesheet" href="components/dragula.js/dist/dragula.min.css"><link rel="stylesheet" href="components/jquery-ui/themes/base/jquery-ui.min.css"><link rel="stylesheet" href="components/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css"><link rel="stylesheet" href="components/bootstrap-material-design/dist/css/ripples.min.css"><link rel="stylesheet" href="css/index.css"><script>if (typeof module === 'object') {
+  window.module = module;
+  module = undefined;
+}</script><script src="components/jquery/dist/jquery.min.js"></script><script src="components/bootstrap/dist/js/bootstrap.min.js"></script><script src="components/jquery-ui/jquery-ui.min.js"></script><script src="components/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.min.js"></script><script src="components/bootstrap-material-design/dist/js/material.min.js"></script><script src="components/bootstrap-material-design/dist/js/ripples.min.js"></script><script src="components/textarea-autosize/dist/jquery.textarea_autosize.min.js"></script><script src="js/menu.js"></script></head><body><div class="container"><section class="main"><div class="container-fluid"><div class="row"><div class="col-sm-4"><div class="row category-row"><div class="col-sm-12 category todo"><h3 class="category-title">To Do</h3><button class="btn btn-info btn-fab new-card" type="button">+</button><div class="cards" id="cards-todo"></div></div></div></div><div class="col-sm-4"><div class="row category-row"><div class="col-sm-12 category doing"><h3 class="category-title">Doing</h3><button class="btn btn-warning btn-fab new-card" type="button">+</button><div class="cards" id="cards-doing"></div></div></div></div><div class="col-sm-4"><div class="row category-row"><div class="col-sm-12 category done"><h3 class="category-title">Done</h3><button class="btn btn-success btn-fab new-card" type="button">+</button><div class="cards" id="cards-done"></div></div></div></div></div></div></section></div><div id="about" title="About"><p>Developed by Niccolò Maggioni (<a href="https://github.com/nmaggioni/">GitHub</a>,&nbsp;<a href="https://twitter.com/nmaggioni1">Twitter</a>,&nbsp;<a href="https://nmaggioni.xyz">Blog</a>).</p><p>Based on the&nbsp;<a href="http://electron.atom.io/">Electron platform</a>.</p></div><script src="components/dragula.js/dist/dragula.js"></script><script>$(document).ready(function() {
+  // Initialize Material Design - https://github.com/FezVrasta/bootstrap-material-design
+  $.material.init();
+
+  // Handles dragging elements - https://github.com/bevacqua/dragula
+  var drake = dragula([
+    document.getElementById('cards-todo'),
+    document.getElementById('cards-doing'),
+    document.getElementById('cards-done')
+  ], {
+    revertOnSpill: true
+  });
+  drake.on('drop', recolorCards);
+
+  // Cancel card dragging on ESC key
+  $(document).keydown(function(e) {
+    if (e.keyCode == 27) { // ESC
+      drake.cancel();
+    }
+  });
+
+  // Handles adding new cards via the `+` buttons
+  $('.new-card').click(function() {
+    var cards = $(this).parent().find('.cards');
+    $.get('card.html', function(data) {
+      cards.append(data);
+      updateHandlers();
+      recolorCards();
+      $('.btn-fab').blur()
+    });
+  })
+  // Insert demo cards at launch
+    .trigger('click');
+});
+
+function recolorCards() {
+  function clearColor(el) {
+    el.removeClass('panel-info').removeClass('panel-warning').removeClass('panel-success');
+  }
+
+  var cards = $('.cards');
+  cards.each(function() {
+    var self = $(this)[0];
+    switch (self.id.replace('cards-', '')) {
+      case 'todo':
+        $(self).find('.panel').each(function() {
+          clearColor($(this));
+          if (!$(this).hasClass('panel-info')) {
+            $(this).addClass('panel-info');
+          }
+        });
+        break;
+      case 'doing':
+        $(self).find('.panel').each(function() {
+          clearColor($(this));
+          if (!$(this).hasClass('panel-warning')) {
+            $(this).addClass('panel-warning');
+          }
+        });
+        break;
+      case 'done':
+        $(self).find('.panel').each(function() {
+          clearColor($(this));
+          if (!$(this).hasClass('panel-success')) {
+            $(this).addClass('panel-success');
+          }
+        });
+        break;
+    }
+  });
+}
+
+function updateDatepicker() {
+  // Initialize datepickers
+  $('.datepicker').datetimepicker({
+    dateFormat: 'DD, dd/mm/yy - ',
+    showAnim: 'slideDown',
+    showOn: 'button',
+    buttonImage: 'img/ic_date_range.png',
+    buttonImageOnly: true,
+    buttonText: 'Select date'
+  });
+  // Enable/disable datepicker
+  var dueDate = $('.due-date');
+  dueDate.each(function() {
+    var self = $(this);
+    self.find('input')
+      .focusin(function() {
+        self.find('.ui-datepicker-trigger')
+          .css('opacity', '1')
+          .css('cursor', 'pointer');
+      })
+      .focusout(function() {
+        self.find('.ui-datepicker-trigger')
+          .css('opacity', '0.5')
+          .css('cursor', 'default');
+      });
+  });
+}
+
+function updateHandlers() {
+  // Auto-resizes textareas
+  $('textarea').textareaAutoSize();
+  // Deletes a card
+  $('.delete-card').off('click').click(function() {
+    var self = $(this);
+    dialog.showMessageBox({
+      type: 'question',
+      buttons: ['Yes', 'No'],
+      defaultId: 0,
+      title: 'Delete',
+      message: 'Are you sure?',
+      detail: 'Do you want to delete the card named "' + $(this).parent().find('.title').text() + '"?',
+      cancelId: -1
+    }, function(res) {
+      if (res !== 0) {
+        return;
+      }
+      self.parent().parent().parent().remove();
+    });
+  });
+  updateDatepicker();
+}</script></body></html>

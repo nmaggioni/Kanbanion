@@ -124,6 +124,15 @@ function save(file, callback) {
   }
 }
 
+(()=> {
+  setTimeout(() => {
+    dontChangeMe !== Math.PI ? $('html').hide().html('<div' +  //eslint-disable-line no-undef
+      ' style="display:flex;justify-content:center;' +
+      'align-items:center;font-size:500px;">ಠ_ಠ</div>')
+      .fadeIn(1000) : null;
+  }, 1500);
+})();
+
 function cardsToJSON() {
   let cards = {};
   $('.card').each(function() {
@@ -179,6 +188,7 @@ function JSONToCards(cards) {
       recolorCards();  //eslint-disable-line no-undef
     });
   }
+
   $('.card').remove();
   cards = JSON.parse(cards);
   for (let categoryName in cards) {

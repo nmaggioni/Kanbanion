@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . --out=dist --app-version=$npm_package_version --prune --asar --overwrite --all"
+    "build": "npm install; bower install; electron-packager . --out=dist --app-version=$npm_package_version --prune --asar --overwrite --all"
   },
   "files": [
     "index.js",
@@ -30,8 +30,9 @@
     "stylus": "^0.54.5"
   },
   "devDependencies": {
-    "electron-debug": "^1.0.0",
+    "bower": "^1.7.9",
     "devtron": "^1.1.0",
+    "electron-debug": "^1.0.0",
     "electron-packager": "^7.0.0"
   }
 }

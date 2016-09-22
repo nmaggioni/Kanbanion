@@ -1,4 +1,4 @@
-# Kanbanion
+# Kanbanion [![Codacy Badge](https://api.codacy.com/project/badge/Grade/672d6512174444789ffc6fa7a48ce061)](https://www.codacy.com/app/nmaggioni/Kanbanion?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nmaggioni/Kanbanion&amp;utm_campaign=Badge_Grade)
 
 > A Kanban board. Simple, digital and local.
 >

@@ -20,8 +20,10 @@ $ npm start
 
 ### Build
 
-To builds the app for Linux, MacOS and Windows using [electron-packager](https://github.com/electron-userland/electron-packager), run:
+To build the app for Linux, MacOS and Windows using [electron-packager](https://github.com/electron-userland/electron-packager), run:
 
 ```
 $ npm run build
 ```
+
+You will then find the binaries and the needed resources in the `dist/Kanbanion-[OS]-[ARCH]/` folders.

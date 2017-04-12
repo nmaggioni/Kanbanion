@@ -6,4 +6,7 @@ ignore:
     - electron > extract-zip > concat-stream:
         reason: None given
         expires: '2017-04-08T21:07:15.361Z'
+    - electron > extract-zip > concat-stream:
+        reason: None given
+        expires: '2017-05-12T11:02:24.015Z'
 patch: {}

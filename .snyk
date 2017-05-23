@@ -9,4 +9,8 @@ ignore:
     - electron > extract-zip > concat-stream:
         reason: None given
         expires: '2017-05-12T11:02:24.015Z'
-patch: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:ms:20170412':
+    - electron > extract-zip > debug > ms:
+        patched: '2017-05-23T07:36:06.661Z'

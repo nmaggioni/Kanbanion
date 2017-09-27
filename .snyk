@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.7.0
+version: v1.7.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:concat-stream:20160901':
@@ -14,3 +14,6 @@ patch:
   'npm:ms:20170412':
     - electron > extract-zip > debug > ms:
         patched: '2017-05-23T07:36:06.661Z'
+  'npm:debug:20170905':
+    - electron > extract-zip > debug:
+        patched: '2017-09-27T04:09:07.493Z'

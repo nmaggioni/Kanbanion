@@ -30,7 +30,7 @@
     "electron-pug": "^1.5.1",
     "pug": "^2.0.0-beta5",
     "stylus": "^0.54.5",
-    "snyk": "^1.192.4"
+    "snyk": "^1.235.0"
   },
   "devDependencies": {
     "bower": "^1.7.9",

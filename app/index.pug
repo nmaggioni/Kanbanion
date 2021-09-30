@@ -10,8 +10,8 @@ html
     link(rel='stylesheet', href='components/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.min.css')
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700')
     link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
-    link(rel='stylesheet', href='components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css')
-    link(rel='stylesheet', href='components/bootstrap-material-design/dist/css/ripples.min.css')
+    link(rel='stylesheet', href='components/MDBootstrap/dist/css/bootstrap-material-design.min.css')
+    link(rel='stylesheet', href='components/MDBootstrap/dist/css/ripples.min.css')
     link(rel='stylesheet', href='css/index.css')
     script.
       if (typeof module === 'object') {
@@ -22,8 +22,8 @@ html
     script(src='components/bootstrap/dist/js/bootstrap.min.js')
     script(src='components/jquery-ui/jquery-ui.min.js')
     script(src='components/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.min.js')
-    script(src='components/bootstrap-material-design/dist/js/material.min.js')
-    script(src='components/bootstrap-material-design/dist/js/ripples.min.js')
+    script(src='components/MDBootstrap/dist/js/material.min.js')
+    script(src='components/MDBootstrap/dist/js/ripples.min.js')
     script(src='components/textarea-autosize/dist/jquery.textarea_autosize.min.js')
     script(src='js/menu.js')
     script.
@@ -187,8 +187,8 @@ html
             message: 'Are you sure?',
             detail: 'Do you want to delete the card named "' + $(this).parent().find('.title').text() + '"?',
             cancelId: -1
-          }, function(res) {
-            if (res !== 0) {
+          }).then(function(res) {
+            if (res.response !== 0) {
               return;
             }
             self.parent().parent().parent().remove();

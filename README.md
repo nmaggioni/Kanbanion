@@ -1,4 +1,4 @@
-# Kanbanion [![Codacy Badge](https://api.codacy.com/project/badge/Grade/672d6512174444789ffc6fa7a48ce061)](https://www.codacy.com/app/nmaggioni/Kanbanion?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nmaggioni/Kanbanion&amp;utm_campaign=Badge_Grade)
+# Kanbanion
 
 > A Kanban board. Simple, digital and local.
 >
@@ -10,13 +10,15 @@
 
 Check [the releases page](https://github.com/nmaggioni/Kanbanion/releases) for ready-to-run builds.
 
-If you want to run Kanbanion directly from the repo, clone it and run the following commands.
+If you want to run Kanbanion directly from the repo in development mode, clone it and run the following commands.
 
 ```
-$ npm install
-$ bower install
+$ npm ci
+$ ./node_modules/bower/bin/bower install
 $ npm start
 ```
+
+The DevTools pane will open automatically.
 
 ### Build
 

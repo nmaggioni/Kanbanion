@@ -1,11 +1,8 @@
 /* eslint-env browser,jquery  */
 
-const remote = require('electron').remote;
-const dialog = remote.dialog;
-const app = remote.app;
+const { dialog, app, Menu } = require('@electron/remote');
 const fs = require('fs');
 let currentFile = null;
-const Menu = remote.Menu;
 const menuTemplate = [
   {
     label: 'File',
@@ -43,8 +40,8 @@ const menuTemplate = [
             message: 'Do you want to save the changes?',
             detail: 'Your work may be lost.',
             cancelId: -1,
-          }, (res) => {
-            if (res !== 0) {
+          }).then((res) => {
+            if (res.response !== 0) {
               return app.quit();
             }
             save(currentFile, app.quit);
@@ -102,12 +99,14 @@ function save(file, callback) {
       { name: 'JSON', extensions: ['json'] },
       { name: 'All Files', extensions: ['*'] }
     ],
-    properties: ['openFile', 'createDirectory']
-  }, (fileName) => {
-    if (!fileName) {
+    properties: ['showOverwriteConfirmation', 'createDirectory']
+  }).then((res) => {
+    if (!res.filePath) {
       return;
+    } else if (!res.filePath.toLowerCase().endsWith('.json')) {
+      res.filePath = `${res.filePath}.json`;
     }
-    writeFile(fileName);
+    writeFile(res.filePath);
   });
 
   function writeFile(file) {  //eslint-disable-line require-jsdoc
@@ -154,11 +153,11 @@ function open(callback) {
       { name: 'JSON', extensions: ['json'] },
       { name: 'All Files', extensions: ['*'] }
     ]
-  }, (fileNames) => {
-    if (!fileNames) {
+  }).then((res) => {
+    if (res.filePaths.length === 0) {
       return;
     }
-    readFile(fileNames[0]);
+    readFile(res.filePaths[0]);
   });
 
   function readFile(file) {  //eslint-disable-line require-jsdoc
@@ -182,7 +181,7 @@ function JSONToCards(cards) {
       let $data = $(data);
       $data.find('.title').find('textarea').val(cardData.title);
       $data.find('.description').find('textarea').val(cardData.description);
-      $data.find('.due-date').find('input').val(cardData.duedate);
+      $data.find('.due-date').find('input').val(cardData.dueDate);
       container.append($data);
       updateHandlers();  //eslint-disable-line no-undef
       recolorCards();  //eslint-disable-line no-undef
